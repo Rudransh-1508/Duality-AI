@@ -49,12 +49,55 @@ Identifying critical safety equipment such as fire extinguishers, oxygen tanks, 
 
 ##  Model Training & Fine-Tuning
 
-We trained the YOLOv8s model with a focus on retaining general object detection capabilities while adapting it to a synthetic domain:
+*YOLOv8s Model (Baseline Fine-Tuning)*
+This model serves as our primary baseline. The strategy involves standard fine-tuning of the pre-trained YOLOv8s (small) model on our custom synthetic dataset.
 
-•⁠  ⁠*Freeze-10 Strategy*: First 10 layers frozen to preserve base features like edges and textures.
-•⁠  ⁠*Transfer Learning*: Based on the paper "Fine-Tuning Without Forgetting", applied adaptation techniques to retain COCO knowledge.
-•⁠  ⁠*Epochs*: 100
+*Methodology*:
 
+The base yolov8s.pt model was loaded.
+
+It was re-trained on the custom dataset for 100 epochs.
+
+Performance was measured on the unseen test set to evaluate final accuracy.
+
+
+*2. SOTA Fine-Tuning (YOLOv8m)*
+This approach uses a more advanced fine-tuning technique inspired by the research paper "FINE-TUNING WITHOUT FORGETTING". It leverages the larger YOLOv8m (medium) model and freezes the initial layers to preserve foundational knowledge.
+
+*Methodology*:
+
+The powerful YOLOv8m model was used for this experiment.
+
+The first 10 layers of the model were frozen (Freeze=10 strategy).
+
+This preserves the model's expert knowledge of basic features like edges and colors, focusing training efforts on deeper, more specialized layers.
+
+This method aims for faster, more efficient learning with a lower risk of overfitting.
+
+
+*3. YOLOv8m with Strong Augmentation*
+This strategy combines the high potential of the YOLOv8m model with aggressive data augmentation to create a more robust model that can handle challenging real-world conditions.
+
+*Methodology*:
+
+The larger YOLOv8m model was used to provide a high baseline for accuracy.
+
+Strong augmentations were applied during training to create challenging scenarios.
+
+These augmentations included techniques like adding fog, rotating images, and applying random dropout.
+
+Performance:
+
+*4. YOLOv8n Model (For Context)*
+While not part of the direct comparative study with performance metrics, the YOLOv8n (nano) model was also considered and is important for context.
+
+Characteristics:
+
+YOLOv8n is the smallest, fastest, and most lightweight model in the YOLOv8 series.
+
+It is specifically designed for high-speed, real-time detection on devices with limited computational power, such as mobile phones, drones, or other edge devices.
+
+Its primary advantage is speed and efficiency, which comes at the cost of slightly lower accuracy compared to the larger s and m models.
 
 ##  Web Interface
 
