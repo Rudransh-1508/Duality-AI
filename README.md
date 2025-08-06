@@ -1,4 +1,8 @@
 # Duality-AI
+## IDEA OVERVIEW AND PRESENTATION: 
+You can view our complete project presentation PDF by clicking the link below:
+
+[View our Presentation:hackwithindia.pdf](./final%20hackwithindia.pdf)
 ##  Overview
 
 This repository contains a full pipeline for detecting essential safety equipment aboard space stations using the YOLOv8 object detection architecture. The model is trained exclusively on synthetic datasets generated using Duality AI’s Falcon digital twin, ensuring robustness in occluded, dimly lit, and cluttered space environments.
